@@ -50,3 +50,37 @@ function eliminar(index) {
 }
 
 renderTabla();
+
+
+function eliminarUsuario(index) {
+    const lista = JSON.parse(localStorage.getItem("usuarios")) || [];
+    lista.splice(index, 1);
+    localStorage.setItem("usuarios", JSON.stringify(lista));
+    mostrarUsuarios();
+  }
+
+
+function editarUsuario(index) {
+    const lista = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuario = lista[index];
+  
+    document.getElementById("nombre").value = usuario.nombre;
+  
+    document.getElementById("form").onsubmit = function(e) {
+      e.preventDefault();
+  
+      const nuevoNombre = document.getElementById("nombre").value.trim();
+      if (!nuevoNombre || nuevoNombre.length < 2) {
+        alert("El nombre editado no es válido");
+        return;
+      }
+  
+      usuario.nombre = nuevoNombre;
+      lista[index] = usuario;
+      localStorage.setItem("usuarios", JSON.stringify(lista));
+  
+      document.getElementById("form").reset();
+      document.getElementById("form").onsubmit = null;
+      mostrarUsuarios();
+    };
+  }
