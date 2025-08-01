@@ -1,21 +1,21 @@
-let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-function renderTabla() {
-  const tbody = document.getElementById("tabla-body");
-  tbody.innerHTML = "";
-  usuarios.forEach((usuario, index) => {
-    tbody.innerHTML += `
-      <tr>
+// 📋 feature/display-table — Renderizado de tabla de usuarios
+function mostrarUsuarios() {
+    const lista = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const tbody = document.getElementById("tabla-usuarios");
+    tbody.innerHTML = "";
+  
+    lista.forEach((usuario, index) => {
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
         <td>${usuario.nombre}</td>
-        <td>${usuario.correo}</td>
         <td>
-          <button onclick="editar(${index})">Editar</button>
-          <button onclick="eliminar(${index})">Eliminar</button>
+          <button onclick="editarUsuario(${index})">Editar</button>
+          <button onclick="eliminarUsuario(${index})">Eliminar</button>
         </td>
-      </tr>
-    `;
-  });
-}
+      `;
+      tbody.appendChild(fila);
+    });
+  }
 
 document.getElementById("form").addEventListener("submit", function (e) {
   e.preventDefault();
