@@ -50,3 +50,17 @@ function eliminar(index) {
 }
 
 renderTabla();
+
+
+document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+  
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("correo").value.trim();
+  
+    if (!nombre || !email || isNaN(parseInt(edadTexto))) {
+      alert("Por favor, ingresa un nombre válido y una edad numérica");
+      return;
+    }
+  });
+  
