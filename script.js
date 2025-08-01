@@ -1,4 +1,3 @@
-// 📋 feature/display-table — Renderizado de tabla de usuarios
 function mostrarUsuarios() {
     const lista = JSON.parse(localStorage.getItem("usuarios")) || [];
     const tbody = document.getElementById("tabla-usuarios");
@@ -16,7 +15,7 @@ function mostrarUsuarios() {
       tbody.appendChild(fila);
     });
   }
-
+  
 document.getElementById("form").addEventListener("submit", function (e) {
   e.preventDefault();
   const nombre = document.getElementById("nombre").value;
@@ -50,3 +49,5 @@ function eliminar(index) {
 }
 
 renderTabla();
+
+
