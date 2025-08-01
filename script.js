@@ -26,7 +26,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
     usuarios[editando] = { nombre, correo };
     editando = null;
   } else {
-    usuarios.push({ nombre, correo });
+    usuarios.push({ nombre, correo }); 
   }
 
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
